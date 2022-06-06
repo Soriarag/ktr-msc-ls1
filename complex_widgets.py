@@ -50,7 +50,7 @@ class ButtonSaveInputs:
     
     values += ");"
     
-    self.cursor.execute("REPLACE INTO users " + values)
+    self.cursor.execute("REPLACE INTO user_profiles " + values)
 
 
   def pack(self):
