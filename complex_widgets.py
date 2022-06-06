@@ -29,18 +29,29 @@ class ButtonSaveInputs:
     self.user = user
     self.cursor = cursor
     self.button = Button(screen, text="Save", command=self.save)
-  
+
+
   def save(self):
     
     values = "VALUES ('" + self.user + "'"
+    
     for input_box in self.inputs:
-      values += ",'" + input_box.get_input()+"'"
+      
+      input = input_box.get_input()
+      
+      if input == "":
+        if input_box.optional == False:
+          print ("Error, non optional argument required")
+          return
+        else :
+          values += ", NULL"
+      else :
+        values += ",'" + input +"'"
     
     values += ");"
     
-    print(values)
-    
     self.cursor.execute("REPLACE INTO users " + values)
-    
+
+
   def pack(self):
      self.button.pack()
