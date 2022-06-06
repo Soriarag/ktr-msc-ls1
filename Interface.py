@@ -22,7 +22,7 @@ cursor.execute('''
 cursor.execute('''
          CREATE TABLE IF NOT EXISTS user_data (
             user_name text PRIMARY KEY,
-            password text NOT NULL,
+            password text NOT NULL
           );
           ''')
 
@@ -92,6 +92,8 @@ class Login(tk.Frame):
         print("user does not exist")
       else:
         print("user does exist")
+        self.controller.show_frame("Profile")
+        
 
 
 class Profile(tk.Frame):
@@ -125,7 +127,7 @@ class SignUp(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        label = tk.Label(self, text="Login", font=controller.title_font)
+        label = tk.Label(self, text="Sign Up", font=controller.title_font)
         label.pack(side="top", fill="x", pady=10)
 
         self.input_user = InputData(self, title="user name", optional=False)
